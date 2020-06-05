@@ -100,8 +100,6 @@ d3.json("data.json").then(data => {
           country => country.name == this.dataset.name
         );
 
-        let hoverName = this.dataset.name;
-
         const densityValue = hoverCountry
           ? hoverCountry.density + " people per km<sup>2</sup>"
           : "No data available";
