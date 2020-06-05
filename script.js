@@ -103,6 +103,8 @@ d3.json("data.json").then(data => {
         );
 
         // console.log(hoverCountry);
+        if (hoverCountry){
+
 
         let hoverName = hoverCountry.name;
 
@@ -120,7 +122,9 @@ d3.json("data.json").then(data => {
         d3.select(`[data-name=${hoverCountry.name}]`)
           .style("stroke", "#fff")
           .style("stroke-width", "1");
+
         leftCountry = hoverCountry.name;
+                }
       })
       .on("mouseleave", () => {
         isHovering = false;
