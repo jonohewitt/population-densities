@@ -112,10 +112,10 @@ d3.json("data.json").then(data => {
         d3.select("p.hoverCountry").html(countryNameStr);
         d3.select("p.hoverDensity").html(densityStr);
 
-          d3.select(`[data-name="${this.dataset.name}"]`)
-            .style("stroke", "#fff")
-            .style("stroke-width", "1");
-          exitedCountry = this.dataset.name;
+        d3.select(`[data-name="${this.dataset.name}"]`)
+          .style("stroke", "#fff")
+          .style("stroke-width", "1");
+        exitedCountry = this.dataset.name;
       })
       .on("mouseleave", () => {
         isHovering = false;
