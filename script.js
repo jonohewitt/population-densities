@@ -90,7 +90,7 @@ d3.json("data.json").then(data => {
     });
 
     let isHovering;
-    let leftCountry;
+    let exitedCountry;
 
     svg
       .selectAll("path")
@@ -102,15 +102,7 @@ d3.json("data.json").then(data => {
           country => country.name == this.dataset.name
         );
 
-        // console.log(hoverCountry);
-        if (hoverCountry){
-
-
-        let hoverName = hoverCountry.name;
-
-        if (/\W/.test(hoverName)){
-          console.log(hoverName + " contains a space!");
-        }
+        let hoverName = this.dataset.name;
 
         const densityValue = hoverCountry
           ? hoverCountry.density + " people per km<sup>2</sup>"
@@ -119,17 +111,17 @@ d3.json("data.json").then(data => {
         const densityStr = `<b>Population Density:</b> ${densityValue}`;
         d3.select("p.hoverCountry").html(countryNameStr);
         d3.select("p.hoverDensity").html(densityStr);
-        d3.select(`[data-name=${hoverCountry.name}]`)
-          .style("stroke", "#fff")
-          .style("stroke-width", "1");
 
-        leftCountry = hoverCountry.name;
-                }
+        if (hoverCountry) {
+          d3.select(`[data-name="${hoverCountry.name}"]`)
+            .style("stroke", "#fff")
+            .style("stroke-width", "1");
+          exitedCountry = hoverCountry.name;
+        }
       })
       .on("mouseleave", () => {
         isHovering = false;
-        d3.select(`[data-name='${leftCountry}']`)
-          .style("stroke-width", "0");
+        d3.select(`[data-name='${exitedCountry}']`).style("stroke-width", "0");
         setTimeout(() => {
           if (!isHovering) {
             d3.select("p.hoverCountry").text(
