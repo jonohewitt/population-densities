@@ -115,7 +115,7 @@ d3.json("data.json").then(data => {
           d3.select(`[data-name="${this.dataset.name}"]`)
             .style("stroke", "#fff")
             .style("stroke-width", "1");
-          exitedCountry = hoverCountry.name;
+          exitedCountry = this.dataset.name;
       })
       .on("mouseleave", () => {
         isHovering = false;
