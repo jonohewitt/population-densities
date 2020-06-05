@@ -1,5 +1,9 @@
 const svg = d3.select("svg");
 
+let scrollHeight = window.innerHeight * 5;
+
+d3.select("body").style("height", `${scrollHeight}px`)
+
 svg.attr("viewBox", "0,0,1000,600");
 
 const worldGroup = svg.append("g");
@@ -31,7 +35,7 @@ d3.json("data.json").then(data => {
 
     const scrollScale = d3
       .scalePow()
-      .domain([0, 5000])
+      .domain([0, scrollHeight])
       .range([0, maxValue])
       .exponent(3);
 
