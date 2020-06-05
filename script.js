@@ -71,9 +71,7 @@ d3.json("data.json").then(data => {
 
       let scrollHTML;
 
-      if (scrollDensityVal == 0.0) {
-        scrollHTML = "Showing all countries with data available";
-      } else if (scrollDensityVal >= maxValue) {
+      if (scrollDensityVal >= maxValue) {
         scrollHTML = "No remaining countries in dataset";
       } else {
         scrollHTML = `Showing countries with over ${scrollDensityVal} people per km<sup>2</sup>`;
