@@ -91,6 +91,7 @@ d3.json("data.json").then(data => {
 
     let isHovering;
     let exitedCountry;
+    let transitionSpeed = 200;
 
     svg
       .selectAll("path")
@@ -111,13 +112,18 @@ d3.json("data.json").then(data => {
         d3.select("p.hoverDensity").html(densityStr);
 
         d3.select(`[data-name="${this.dataset.name}"]`)
+          .transition()
+          .duration(transitionSpeed)
           .style("stroke", "#fff")
           .style("stroke-width", "1");
         exitedCountry = this.dataset.name;
       })
       .on("mouseleave", () => {
         isHovering = false;
-        d3.select(`[data-name='${exitedCountry}']`).style("stroke-width", "0");
+        d3.select(`[data-name='${exitedCountry}']`)
+        .transition()
+        .duration(transitionSpeed * 2)
+        .style("stroke-width", "0");
         setTimeout(() => {
           if (!isHovering) {
             d3.select("p.hoverCountry").text(
